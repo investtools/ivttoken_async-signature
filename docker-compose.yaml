@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  database:
+    image: postgres:11
+    container_name: "db-blockchain"
+    environment:
+      POSTGRES_DB: "db-blockchain"
+      POSTGRES_PASSWORD: "db-blockchain"
+      POSTGRES_USER: "db-blockchain"
+    ports:
+      - "5432:5432"

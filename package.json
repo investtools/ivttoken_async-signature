@@ -1,0 +1,35 @@
+{
+  "type": "module",
+  "name": "async-signature",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd ./src/async-signature-lambda/ && serverless offline start && cd .. && cd ..",
+    "serverless:remove": "cd ./src/async-signature-lambda/ && serverless remove && cd .. && cd ..",
+    "serverless:test:hello": "cd ./src/async-signature-lambda/ && serverless invoke -f hello -l && cd .. && cd ..",
+    "serverless:deploy": "cd ./src/async-signature-lambda/ && serverless deploy -v && cd .. && cd ..",
+    "test": "mocha './specs/*.spec.js'",
+    "indexTest": "node ./src/index.js",
+    "database:local:prepare": "docker-compose up -d --no-deps database && sleep 3",
+    "prisma:migrate:deploy": "npx prisma migrate deploy",
+    "prisma:migrate:dev": "npx prisma migrate dev",
+    "prisma:generate": "npx prisma generate",
+    "prisma:studio": "npx prisma studio"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.11.0",
+    "dotenv": "^16.0.3",
+    "ethers": "^6.0.8",
+    "ethers-eip712": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.2",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "prisma": "^4.11.0",
+    "serverless-offline": "^12.0.4"
+  }
+}
