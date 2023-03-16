@@ -1,0 +1,47 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    environment: Test  # This is the name of the environment to deploy to
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Create .env file
+        run: |
+          touch .env
+          echo "DATABASE_URL=" >> .env
+          echo "PROVIDER_NETWORK=" >> .env
+          echo "PROVIDER_API_KEY=" >> .env
+          echo "BLOCKCHAIN_STUDIO_ADDRESS=" >> .env
+          echo "BLOCKCHAIN_STUDIO_PRIVATE_KEY=" >> .env
+          echo "CONTRACT_ADDRESS=" >> .env
+          echo "MULTISIG_CONTRACT_ADDRESS=" >> .env
+          echo "BLOCKNATIVE_API_KEY=""" >> .env
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Create docker container instance
+        run: npm run database:local:prepare
+
+      - name: Create a migration
+        run: npm run prisma:migrate:dev
+
+      - name: Run prisma studio
+        run: npm run prisma:studio
+        
+      - name: Run tests
+        run: npm run test
