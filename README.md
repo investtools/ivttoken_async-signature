@@ -1,6 +1,6 @@
 # Asynchronous Signature Service
 
-[![Test](https://https://github.com/investtools/ivttoken_async-signature/actions/workflows/test.yml/badge.svg)](https://https://github.com/investtools/ivttoken_async-signature/actions/workflows/async-signature-test.yml)
+[![Test](https://github.com/investtools/ivttoken_async-signature/actions/workflows/test.yml/badge.svg)](https://github.com/investtools/ivttoken_async-signature/actions/workflows/test.yml)
 
 
 This is a service used to multi-sign a transaction asynchronously

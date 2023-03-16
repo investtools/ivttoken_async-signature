@@ -25,6 +25,7 @@ jobs:
           echo "CONTRACT_ADDRESS=" >> .env
           echo "MULTISIG_CONTRACT_ADDRESS=" >> .env
           echo "BLOCKNATIVE_API_KEY=""" >> .env
+          
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
