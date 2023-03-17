@@ -17,7 +17,7 @@ jobs:
       - name: Create .env file
         run: |
           touch .env
-          echo "DATABASE_URL=" >> .env
+          echo "DATABASE_URL='postgresql://db-blockchain:db-blockchain@localhost:5432/db-blockchain?schema=public'" >> .env
           echo "PROVIDER_NETWORK=" >> .env
           echo "PROVIDER_API_KEY=" >> .env
           echo "BLOCKCHAIN_STUDIO_ADDRESS=" >> .env
