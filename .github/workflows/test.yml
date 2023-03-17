@@ -25,23 +25,20 @@ jobs:
           echo "CONTRACT_ADDRESS=" >> .env
           echo "MULTISIG_CONTRACT_ADDRESS=" >> .env
           echo "BLOCKNATIVE_API_KEY=""" >> .env
-          
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: latest
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci -f
 
       - name: Create docker container instance
         run: npm run database:local:prepare
 
       - name: Create a migration
         run: npm run prisma:migrate:dev
-
-      - name: Run prisma studio
-        run: npm run prisma:studio
 
       - name: Run tests
         run: npm run test
